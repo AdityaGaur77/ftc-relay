@@ -12,13 +12,17 @@ A mentoring site for FTC teams. Experienced people (alumni, students still compe
 
 ## Running it
 
-It's plain HTML/CSS/JS with no build step. Open `index.html`, or serve the folder:
+Plain HTML/CSS/JS, no build step.
+
+**Deploy on Vercel:** import the repo in Vercel, leave Framework Preset as "Other", and leave the build command and output directory empty. `vercel.json` turns on clean URLs, so pages live at `/mentors`, `/board` and so on.
+
+**Run locally:**
 
 ```
-python3 -m http.server 8000
+npx vercel dev
 ```
 
-To host it on GitHub Pages, go to Settings → Pages and deploy from the branch root.
+`npx serve .` also works.
 
 ## Things to change
 

@@ -29,12 +29,14 @@
     ["hours.html", "Volunteer hours"],
   ];
 
-  const logoSvg = `<svg class="logo-mark" viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="14.5" fill="none" stroke="currentColor" stroke-width="2"/><rect x="6" y="13.5" width="20" height="5" rx="2.5" transform="rotate(-35 16 16)" fill="#ee5a24"/></svg>`;
+  const logoSvg = `<svg class="logo-mark" viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="14.5" fill="none" stroke="currentColor" stroke-width="2"/><rect x="6" y="13.5" width="20" height="5" rx="2.5" transform="rotate(-35 16 16)" fill="#e2242f"/></svg>`;
 
   function renderNav() {
     const host = $("#nav");
     if (!host) return;
-    const page = location.pathname.split("/").pop() || "index.html";
+    // Vercel serves clean URLs (/mentors), locally it's mentors.html
+    let page = location.pathname.split("/").pop() || "index";
+    page = page.replace(/\.html$/, "") + ".html";
     host.className = "nav";
     host.innerHTML = `
       <div class="wrap">

@@ -100,7 +100,7 @@
       <div class="profile-head">
         ${UI.avatar(m, "lg")}
         <div>
-          <span class="pill ${m.kind === "current" ? "orange" : "solid"}">${KIND[m.kind]}</span>
+          <span class="pill ${m.kind === "current" ? "accent" : "solid"}">${KIND[m.kind]}</span>
           <h2 style="margin-top:8px">${esc(m.name)}</h2>
           <div class="mono muted">${esc(m.team)} · ${m.years} seasons</div>
         </div>

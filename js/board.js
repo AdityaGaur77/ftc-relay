@@ -81,7 +81,7 @@
           <p class="op">${esc(p.body)}</p>
           ${p.replies.map((r) => `
             <div class="reply ${r.mentor ? "mentor" : ""}">
-              <div class="meta">${esc(r.by)} ${esc(r.team || "")}${r.mentor ? " · <b style='color:var(--orange)'>mentor</b>" : ""} · ${ago(r.at)}</div>
+              <div class="meta">${esc(r.by)} ${esc(r.team || "")}${r.mentor ? " · <b style='color:var(--accent)'>mentor</b>" : ""} · ${ago(r.at)}</div>
               <p>${esc(r.body)}</p>
             </div>`).join("")}
           <form class="reply-form">

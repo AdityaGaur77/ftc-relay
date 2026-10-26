@@ -40,7 +40,7 @@
       kind: "current",
       team: "#20311 Ctrl Alt Defeat",
       years: 3,
-      color: "#ee5a24",
+      color: "#e2242f",
       specialties: ["CAD", "Build"],
       blurb: "Onshape person. I'll help you get from a sketch on a napkin to a drivetrain that doesn't fall apart in match 2.",
       bio: "I'm a junior and still competing, so I know what this season's game looks like from the inside. I do most of our CAD in Onshape and I'm obsessive about linear slides. If your team doesn't have a CAD person yet, I can help you get one going.",
