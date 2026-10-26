@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mentors — FTC Relay</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,300..700,0..100,0..1;1,9..144,300..700,0..100,0..1&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header id="nav"></header>
+
+  <main>
+    <section class="page-head">
+      <div class="wrap">
+        <div class="row">
+          <div>
+            <div class="mono muted" style="margin-bottom:18px" data-reveal>the directory</div>
+            <h1 data-split>The <em>mentors.</em></h1>
+            <p data-reveal style="--i:2">Click anyone to read their full bio, see what other teams said, and book a time. Feedback is just thumbs up or down: did it help or not.</p>
+          </div>
+          <div class="mono muted" data-reveal style="--i:3"><span id="count">0</span> people · <span id="slotCount">0</span> open slots this week</div>
+        </div>
+      </div>
+    </section>
+
+    <div class="toolbar">
+      <div class="wrap" style="display:flex;gap:12px;flex-wrap:wrap;align-items:center;padding:0">
+        <label class="sr-only" for="q">Search mentors</label>
+        <input type="search" id="q" placeholder="Search names, teams, skills…">
+        <div class="chips" id="chips"></div>
+        <label class="sr-only" for="kind">Mentor type</label>
+        <select id="kind">
+          <option value="">Everyone</option>
+          <option value="alum">Alumni</option>
+          <option value="current">Competing now</option>
+          <option value="pro">Engineers / judges</option>
+        </select>
+        <label class="sr-only" for="sort">Sort</label>
+        <select id="sort">
+          <option value="fb">Most positive</option>
+          <option value="years">Most seasons</option>
+          <option value="name">A–Z</option>
+        </select>
+      </div>
+    </div>
+
+    <section style="padding:48px 0 120px">
+      <div class="wrap">
+        <div class="cards" id="grid"></div>
+        <p class="empty" id="empty" hidden>Nobody matches that. Try fewer filters?</p>
+      </div>
+    </section>
+  </main>
+
+  <div class="drawer-back" id="drawerBack"></div>
+  <aside class="drawer" id="drawer" aria-hidden="true" aria-label="Mentor profile">
+    <div class="drawer-close"><button id="drawerClose" aria-label="Close">✕</button></div>
+    <div class="drawer-inner" id="drawerBody"></div>
+  </aside>
+
+  <footer id="foot"></footer>
+
+  <script src="js/store.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/mentors.js"></script>
+</body>
+</html>

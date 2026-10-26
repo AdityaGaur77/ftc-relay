@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Volunteer hours — FTC Relay</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,300..700,0..100,0..1;1,9..144,300..700,0..100,0..1&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header id="nav"></header>
+
+  <main>
+    <section class="page-head">
+      <div class="wrap">
+        <div class="mono muted" style="margin-bottom:18px" data-reveal>for mentors</div>
+        <h1 data-split>Volunteer <em>hours.</em></h1>
+        <p data-reveal style="--i:2">Relay is run through our nonprofit, so time you spend mentoring can count as volunteer service. There's a cap, and we need proof, so please read the rules before you log anything.</p>
+      </div>
+    </section>
+
+    <div class="wrap">
+      <div class="hours-layout">
+        <div>
+          <span class="lbl">The rules</span>
+          <ol class="rules" style="margin-top:14px">
+            <li data-reveal><div><b>Every call is recorded.</b><p>Hit record (Zoom, Meet, Discord, whatever) before you start. Tell the team at the top of the call that it's being recorded. They also agreed to it when they booked.</p></div></li>
+            <li data-reveal><div><b>Hours are capped.</b><p>You can log up to <span class="js-cap"></span> hours per season, and one call counts for at most <span class="js-per"></span> hours. That keeps it about mentoring, not farming hours.</p></div></li>
+            <li data-reveal><div><b>Log it within a week.</b><p>Paste the recording link, the team you helped, and roughly what you covered. Make sure the link can be opened by anyone with it.</p></div></li>
+            <li data-reveal><div><b>We review, then approve.</b><p>Someone from the NPO watches enough of the recording to confirm it happened and how long it ran. Then it shows as approved and counts toward your total.</p></div></li>
+            <li data-reveal><div><b>Board replies don't count.</b><p>Only live, recorded sessions with a team. Helping on the board is great, it just isn't something we can verify as hours.</p></div></li>
+          </ol>
+          <div class="notice soft" style="margin-top:22px" data-reveal>Recordings are only used to verify hours and are deleted at the end of the season. Mentors under 18 should check with a parent before recording calls.</div>
+        </div>
+
+        <div>
+          <div class="cap" data-reveal>
+            <div class="cap-top">
+              <div><span class="lbl">Your hours · <span class="js-season"></span></span><br><b id="capNum">0</b> <span class="muted">/ <span class="js-cap"></span></span></div>
+              <span class="mono muted" id="capLeft"></span>
+            </div>
+            <div class="cap-bar"><i id="capApproved"></i><i id="capPending" class="pending"></i></div>
+            <div class="cap-legend"><span class="a">approved</span><span class="p">pending review</span></div>
+          </div>
+
+          <form class="composer" id="logForm" data-reveal>
+            <span class="lbl" style="display:block;margin-bottom:14px">Log a session</span>
+            <div class="form-row">
+              <div class="field"><label for="hDate">Date</label><input type="date" id="hDate" required></div>
+              <div class="field"><label for="hHours">Length (hours)</label><input type="number" id="hHours" required min="0.25" step="0.25"></div>
+            </div>
+            <div class="field"><label for="hTeam">Team you helped</label><input type="text" id="hTeam" required maxlength="40" placeholder="#23901"></div>
+            <div class="field"><label for="hLink">Recording link</label><input type="url" id="hLink" required placeholder="https://…"></div>
+            <div class="field"><label for="hNotes">What you covered</label><textarea id="hNotes" required maxlength="500" style="min-height:70px"></textarea></div>
+            <label class="check" style="margin-bottom:16px"><input type="checkbox" required> The whole session is in the recording, and the team knew it was being recorded.</label>
+            <button class="btn small">Submit for review</button>
+          </form>
+
+          <div style="margin-top:32px">
+            <span class="lbl">Logged sessions</span>
+            <div class="table-scroll">
+              <table class="log-table">
+                <thead><tr><th>Date</th><th>Team</th><th>Hrs</th><th>Proof</th><th>Status</th></tr></thead>
+                <tbody id="logBody"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer id="foot"></footer>
+
+  <script src="js/store.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/hours.js"></script>
+</body>
+</html>
+

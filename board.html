@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Board — FTC Relay</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,300..700,0..100,0..1;1,9..144,300..700,0..100,0..1&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header id="nav"></header>
+
+  <main>
+    <section class="page-head">
+      <div class="wrap">
+        <div class="row">
+          <div>
+            <div class="mono muted" style="margin-bottom:18px" data-reveal>community board</div>
+            <h1 data-split>Ask the <em>room.</em></h1>
+            <p data-reveal style="--i:2">Questions, wins, half-broken robots. Every team on Relay can see this, and mentors check it too. Their replies have an orange stripe.</p>
+          </div>
+          <button class="btn" id="newPostBtn" data-reveal style="--i:3">New post <span class="arrow">↓</span></button>
+        </div>
+      </div>
+    </section>
+
+    <div class="wrap">
+      <div class="board-layout">
+        <aside class="board-side">
+          <span class="lbl">Topics</span>
+          <div class="cats" id="cats"></div>
+          <span class="lbl" style="display:block;margin-top:28px">Sort</span>
+          <div class="cats" id="sorts">
+            <button data-sort="new" aria-pressed="true">Newest</button>
+            <button data-sort="top" aria-pressed="false">Most upvoted</button>
+            <button data-sort="active" aria-pressed="false">Most replies</button>
+          </div>
+        </aside>
+
+        <div>
+          <form class="composer" id="composer" hidden>
+            <div class="form-row">
+              <div class="field"><label for="pTitle">Title</label><input type="text" id="pTitle" required maxlength="120" placeholder="Keep it specific"></div>
+              <div class="field"><label for="pCat">Topic</label><select id="pCat"></select></div>
+            </div>
+            <div class="field"><label for="pBody">Details</label><textarea id="pBody" required maxlength="3000" placeholder="What did you try? What happened?"></textarea></div>
+            <div class="composer-actions">
+              <span class="mono muted">Be nice. Everyone here is a volunteer or a kid.</span>
+              <div style="display:flex;gap:8px"><button type="button" class="btn ghost small" id="cancelPost">Cancel</button><button class="btn small">Post</button></div>
+            </div>
+          </form>
+          <div id="threads"></div>
+          <p class="empty" id="empty" hidden>Nothing here yet. Be the first?</p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer id="foot"></footer>
+
+  <script src="js/store.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/board.js"></script>
+</body>
+</html>
+
