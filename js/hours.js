@@ -18,14 +18,14 @@
       const hours = parseFloat($("#hHours").value);
       const { left } = Store.hoursTotals();
       if (hours > left) {
-        UI.toast(left ? `You only have ${left} hours left this season.` : "You've hit the cap for this season.");
+        UI.toast(left ? `You only have ${left} hours left this season.` : "You have reached this season's limit.");
         return;
       }
       let team = $("#hTeam").value.trim();
       if (!team.startsWith("#") && /^\d/.test(team)) team = "#" + team;
       Store.logHours({ date: $("#hDate").value, hours, team, link: $("#hLink").value.trim(), notes: $("#hNotes").value.trim(), by: me.name });
       e.target.reset();
-      UI.toast("Submitted. We'll review the recording soon.");
+      UI.toast("Session submitted for review.");
       paint();
     });
 

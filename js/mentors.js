@@ -100,7 +100,7 @@
       <div class="profile-head">
         ${UI.avatar(m, "lg")}
         <div>
-          <span class="pill ${m.kind === "current" ? "accent" : "solid"}">${KIND[m.kind]}</span>
+          <span class="kind-stamp ${m.kind}">${KIND[m.kind]}</span>
           <h2 style="margin-top:8px">${esc(m.name)}</h2>
           <div class="mono muted">${esc(m.team)} · ${m.years} seasons</div>
         </div>
@@ -126,11 +126,11 @@
           </div>
           <div class="field">
             <label for="topic">What do you want help with?</label>
-            <textarea id="topic" required maxlength="600" placeholder="e.g. our auto drifts left on long moves, we use Road Runner 1.0…"></textarea>
+            <textarea id="topic" required maxlength="600" placeholder="e.g. Our autonomous drifts left on long moves. We use Road Runner 1.0."></textarea>
           </div>
           <div class="notice">
             <label class="check"><input type="checkbox" id="recConsent" required>
-              <span>I'm okay with this call being recorded. Mentors who earn volunteer hours through Relay have to record their sessions as proof. Recordings are only used to verify hours.</span>
+              <span>I agree that this session will be recorded. Recordings are reviewed by the nonprofit to verify mentor volunteer hours and are not shared publicly.</span>
             </label>
           </div>
           <button class="btn" id="bookBtn" disabled>Book it <span class="arrow">→</span></button>
@@ -160,11 +160,11 @@
                 <button type="button" class="pos" aria-pressed="${mine?.positive === true}">${thumb(true)} Helped</button>
                 <button type="button" class="neg" aria-pressed="${mine?.positive === false}">${thumb(false)} Didn't help</button>
               </div>
-              <div class="field"><label for="fbNote">Anything else? (optional)</label><textarea id="fbNote" maxlength="400" placeholder="One or two sentences is plenty.">${esc(mine?.note || "")}</textarea></div>
+              <div class="field"><label for="fbNote">Comment (optional)</label><textarea id="fbNote" maxlength="400" placeholder="What was most useful, or what could be better?">${esc(mine?.note || "")}</textarea></div>
               <label class="check" style="margin-bottom:14px"><input type="checkbox" id="fbAnon" ${mine?.by === "anonymous" ? "checked" : ""}> Post without my name</label>
               <button class="btn small" id="fbBtn" ${mine ? "" : "disabled"}>${mine ? "Update" : "Post feedback"}</button>
             </form>`
-          : `<div class="notice soft">Only teams who've booked a session with ${esc(m.name.split(" ")[0])} can leave feedback. Keeps it honest.</div>`}
+          : `<div class="notice soft">Only teams who've booked a session with ${esc(m.name.split(" ")[0])} can leave feedback.</div>`}
       </div>`;
 
     wireBooking(m);
@@ -193,8 +193,8 @@
       const me = await UI.requireMe();
       if (!me) return;
       Store.book({ mentor: m.id, slot, topic: $("#topic").value.trim(), byId: me.id, by: me.name, team: me.team });
-      Store.send(m.id, `Hi! I just booked ${slot}. Here's what we need help with:\n\n${$("#topic").value.trim()}`);
-      UI.toast(`Booked ${m.name.split(" ")[0]} for ${slot}.`);
+      Store.send(m.id, `Hi! I just booked ${slot}. Here is what we need help with:\n\n${$("#topic").value.trim()}`);
+      UI.toast(`Session booked with ${m.name.split(" ")[0]} for ${slot}.`);
       paintProfile(m);
       render();
     });
@@ -215,7 +215,7 @@
       e.preventDefault();
       if (verdict == null) return;
       Store.leaveFeedback(m.id, verdict, $("#fbNote").value, $("#fbAnon").checked);
-      UI.toast("Thanks, that helps other teams.");
+      UI.toast("Feedback posted.");
       paintProfile(m);
       render();
     });

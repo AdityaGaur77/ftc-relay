@@ -84,7 +84,7 @@
     const m = Store.mentor(current);
     $("#log").innerHTML = msgs.length
       ? msgs.map((x) => `<div class="bubble ${x.from === "me" ? "me" : "them"}">${esc(x.text)}<time>${ago(x.at)}</time></div>`).join("")
-      : `<div class="chat-empty">Say hi to ${esc(m.name.split(" ")[0])}. Mentioning your team number and what you're stuck on helps.</div>`;
+      : `<div class="chat-empty">Start the conversation with ${esc(m.name.split(" ")[0])}. Include your team number and what you need help with.</div>`;
     $("#log").scrollTop = $("#log").scrollHeight;
   }
 })();

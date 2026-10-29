@@ -42,7 +42,7 @@
       $$("#sorts button").forEach((x) => x.setAttribute("aria-pressed", x.dataset.sort === "new"));
       state.open.add(Store.posts()[0].id);
       render();
-      UI.toast("Posted.");
+      UI.toast("Post published.");
     });
 
     $("#threads").addEventListener("click", onThreadClick);
@@ -73,7 +73,7 @@
           <button class="upv" aria-pressed="${!!p.voted}" aria-label="Upvote" data-vote>${up}<span>${p.votes}</span></button>
           <div>
             <h3>${esc(p.title)}</h3>
-            <div class="meta"><span class="pill">${esc(p.cat)}</span><span>${esc(p.by)} ${esc(p.team || "")}${p.mentor ? " · mentor" : ""}</span><span>${ago(p.at)}</span></div>
+            <div class="meta"><span class="pill">${esc(p.cat)}</span><span>${esc(p.by)} ${esc(p.team || "")}${p.mentor ? " · Mentor" : ""}</span><span>${ago(p.at)}</span></div>
           </div>
           <div class="thread-count">${p.replies.length}<small>replies</small></div>
         </div>
@@ -81,7 +81,7 @@
           <p class="op">${esc(p.body)}</p>
           ${p.replies.map((r) => `
             <div class="reply ${r.mentor ? "mentor" : ""}">
-              <div class="meta">${esc(r.by)} ${esc(r.team || "")}${r.mentor ? " · <b style='color:var(--accent)'>mentor</b>" : ""} · ${ago(r.at)}</div>
+              <div class="meta">${esc(r.by)} ${esc(r.team || "")}${r.mentor ? " · <b>Mentor</b>" : ""} · ${ago(r.at)}</div>
               <p>${esc(r.body)}</p>
             </div>`).join("")}
           <form class="reply-form">

@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#07080b">
   <title>Mentors — FTC Relay</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -17,9 +18,9 @@
       <div class="wrap">
         <div class="row">
           <div>
-            <div class="mono muted" style="margin-bottom:18px" data-reveal>the directory</div>
-            <h1 data-split>The <em>mentors.</em></h1>
-            <p data-reveal style="--i:2">Click anyone to read their full bio, see what other teams said, and book a time. Feedback is just thumbs up or down: did it help or not.</p>
+            <span class="eyebrow" data-reveal>Mentor directory</span>
+            <h1 data-split>Find the right <em>mentor.</em></h1>
+            <p data-reveal style="--i:2">Open a profile to read their background, see what other teams said, and book a session. Every review answers one question: did the session help?</p>
           </div>
           <div class="mono muted" data-reveal style="--i:3"><span id="count">0</span> people · <span id="slotCount">0</span> open slots this week</div>
         </div>
@@ -50,7 +51,7 @@
     <section style="padding:48px 0 120px">
       <div class="wrap">
         <div class="cards" id="grid"></div>
-        <p class="empty" id="empty" hidden>Nobody matches that. Try fewer filters?</p>
+        <p class="empty" id="empty" hidden>No mentors match those filters. Try removing one.</p>
       </div>
     </section>
   </main>

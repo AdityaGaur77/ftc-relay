@@ -17,7 +17,7 @@
 
   const initials = (name) => name.split(/\s+/).map((w) => w[0]).slice(0, 2).join("").toUpperCase();
 
-  const KIND = { alum: "Alum", current: "Competing now", pro: "Engineer / judge" };
+  const KIND = { alum: "Alumni", current: "Current competitor", pro: "Engineer · Judge" };
 
   /* ---------- nav + footer ---------- */
 
@@ -29,7 +29,8 @@
     ["hours.html", "Volunteer hours"],
   ];
 
-  const logoSvg = `<svg class="logo-mark" viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="14.5" fill="none" stroke="currentColor" stroke-width="2"/><rect x="6" y="13.5" width="20" height="5" rx="2.5" transform="rotate(-35 16 16)" fill="#e2242f"/></svg>`;
+  // two offset tiles: one hands off to the next
+  const logoSvg = `<svg class="logo-mark" viewBox="0 0 32 32" aria-hidden="true"><rect x="2" y="2" width="17" height="17" rx="3" fill="#3d6bff"/><rect x="13" y="13" width="17" height="17" rx="3" fill="none" stroke="#e33b9f" stroke-width="2.5"/></svg>`;
 
   function renderNav() {
     const host = $("#nav");
@@ -40,7 +41,7 @@
     host.className = "nav";
     host.innerHTML = `
       <div class="wrap">
-        <a class="logo" href="index.html">${logoSvg}<span>ftc<b>/</b>relay</span></a>
+        <a class="logo" href="index.html">${logoSvg}<span>FTC Relay</span></a>
         <button class="nav-toggle" aria-label="Menu" aria-expanded="false"><span></span><span></span></button>
         <ul class="nav-links">
           ${LINKS.map(([href, label]) => `<li><a href="${href}" ${href === page ? 'aria-current="page"' : ""}>${label}</a></li>`).join("")}
@@ -69,7 +70,7 @@
     const chip = $("#meChip");
     if (!chip) return;
     const me = Store.me();
-    chip.textContent = me ? `${me.name}${me.team ? " · " + me.team : ""}` : "sign in";
+    chip.textContent = me ? `${me.name}${me.team ? " · " + me.team : ""}` : "Sign in";
   }
 
   function renderFooter() {
@@ -77,7 +78,7 @@
     if (!host) return;
     host.innerHTML = `
       <div class="wrap">
-        <div>ftc/relay — a student-run mentoring project.<br><span style="opacity:.7">Not affiliated with FIRST®. FTC is a trademark of FIRST.</span></div>
+        <div class="foot-brand"><a class="logo" href="index.html">${logoSvg}<span>FTC Relay</span></a><p>Mentorship for FIRST Tech Challenge teams, run by a student-led nonprofit.</p><p class="fine">Not affiliated with or endorsed by FIRST®. FIRST Tech Challenge is a trademark of FIRST.</p></div>
         <nav>${LINKS.map(([h, l]) => `<a href="${h}">${l}</a>`).join("")}</nav>
       </div>`;
   }
@@ -92,8 +93,8 @@
     back.className = "modal-back";
     back.innerHTML = `
       <form class="modal" id="whoForm">
-        <h3>Who's this?</h3>
-        <p>Just a name and your team so mentors know who they're talking to. No password yet, this is saved on your device.</p>
+        <h3>Sign in</h3>
+        <p>Your name and team number let mentors know who they're working with. This is saved on this device only.</p>
         <div class="field"><label for="whoName">Your name</label><input type="text" id="whoName" required maxlength="40" autocomplete="given-name"></div>
         <div class="form-row">
           <div class="field"><label for="whoTeam">Team #</label><input type="text" id="whoTeam" placeholder="#12345" maxlength="12"></div>
@@ -118,7 +119,7 @@
       const me = { id: prev?.id || Store.uid(), name: $("#whoName").value.trim(), team, role: $("#whoRole").value };
       Store.setMe(me);
       paintMe();
-      toast(`Hi ${me.name}.`);
+      toast(`Signed in as ${me.name}.`);
       close(me);
     });
     return back;
@@ -195,20 +196,22 @@
   }
 
   function voteMeter(s) {
-    if (!s.total) return `<span class="muted">no feedback yet</span>`;
-    return `<span class="vote-meter"><span class="bar"><i style="width:${s.pct}%"></i></span>${s.pct}% positive · ${s.total}</span>`;
+    if (!s.total) return `<span class="muted">No feedback yet</span>`;
+    return `<span class="vote-meter"><span class="bar"><i style="width:${s.pct}%"></i></span>${s.pct}% positive · ${s.total} reviews</span>`;
   }
 
-  // index card used on the home page and the mentor directory
+  // profile card used on the home page and the mentor directory
   function mentorCard(m, i = 0) {
     const s = Store.score(m.id);
     return `
       <button class="icard" data-id="${m.id}" data-reveal style="--i:${i % 3}">
-        <span class="kind-stamp ${m.kind}">${KIND[m.kind]}</span>
-        <div class="icard-top">${avatar(m)}<div><h3>${esc(m.name)}</h3><div class="team">${esc(m.team)}</div></div></div>
+        <div class="icard-top">
+          ${avatar(m)}
+          <div class="icard-id"><h3>${esc(m.name)}</h3><div class="team">${esc(m.team)}</div></div>
+        </div>
         <p class="blurb">${esc(m.blurb)}</p>
-        <div class="tags">${m.specialties.map((t) => `<span class="pill">${esc(t)}</span>`).join("")}</div>
-        <div class="icard-foot">${voteMeter(s)}<span>${m.years} seasons</span></div>
+        <div class="tags"><span class="kind-stamp ${m.kind}">${KIND[m.kind]}</span>${m.specialties.map((t) => `<span class="pill">${esc(t)}</span>`).join("")}</div>
+        <div class="icard-foot">${voteMeter(s)}<span>${m.years} seasons · ${m.slots.length} open slots</span></div>
       </button>`;
   }
 

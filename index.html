@@ -2,9 +2,10 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>FTC Relay</title>
-  <meta name="description" content="Book a call with someone who's already been through a few FTC seasons. Alumni, current competitors, engineers.">
+  <meta name="description" content="One-on-one mentorship for FIRST Tech Challenge teams from alumni, current competitors and engineers. Every session recorded and reviewed.">
+  <meta name="theme-color" content="#07080b">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,100..900;1,62..125,100..900&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
@@ -12,186 +13,313 @@
 </head>
 <body>
   <header id="nav"></header>
-  <div class="track" aria-hidden="true"><i></i><b></b></div>
+  <div class="track" aria-hidden="true"><i></i></div>
 
   <main>
     <!-- hero -->
     <section class="hero">
       <div class="wrap">
-        <div class="hero-kicker mono"><span class="dot"></span> mentoring for FTC teams · season 2026–27</div>
-        <h1 data-split>Somebody<br>helped you.<br><span class="circled"><em>Pass it on.</em><svg viewBox="0 0 300 100" preserveAspectRatio="none" aria-hidden="true"><path d="M20 58 C 18 22, 120 8, 200 14 S 296 40, 286 64 C 276 90, 150 98, 70 90 S 4 70, 30 40"/></svg></span></h1>
-
-        <div class="hero-row">
-          <p class="hero-lede" data-reveal style="--i:4">FTC Relay connects rookie and younger teams with people who've already done a few seasons: alumni, kids still competing, engineers who judge. Book a call, ask the board, or just message someone.</p>
-          <div class="hero-cta" data-reveal style="--i:5">
-            <a class="btn" href="mentors.html">Find a mentor <span class="arrow">→</span></a>
-            <a class="btn ghost" href="hours.html">I want to mentor</a>
+        <div>
+          <span class="eyebrow" data-reveal>Mentorship for FIRST Tech Challenge</span>
+          <h1 data-split>Learn from people<br>who've <em>already</em><br>done it.</h1>
+          <p class="hero-lede" data-reveal style="--i:3">One-on-one video sessions with FTC alumni, current competitors and working engineers. Students get real answers. Parents get full visibility: every session is recorded and reviewed.</p>
+          <div class="hero-cta" data-reveal style="--i:4">
+            <a class="btn" href="mentors.html">Browse mentors <span class="arrow">→</span></a>
+            <a class="btn ghost" href="#parents">Information for parents</a>
+          </div>
+          <div class="hero-assure" data-reveal style="--i:5">
+            <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Free for teams</span>
+            <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Sessions recorded</span>
+            <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Run by a nonprofit</span>
           </div>
         </div>
-      </div>
 
-      <aside class="hero-note" data-speed="-0.15">
-        ps. it's free. we're a student team too, we just remember how lost we were our first year.
-      </aside>
-
-      <div class="marquee" aria-hidden="true">
-        <div class="marquee-track">
-          <span>drivetrains that don't drift</span><span>road runner paths</span><span>the engineering portfolio</span><span>judging interviews</span><span>an auto that just parks</span><span>onshape from zero</span><span>scouting sheets</span><span>outreach that counts</span><span>linear slides</span><span>alliance selection</span>
-          <span>drivetrains that don't drift</span><span>road runner paths</span><span>the engineering portfolio</span><span>judging interviews</span><span>an auto that just parks</span><span>onshape from zero</span><span>scouting sheets</span><span>outreach that counts</span><span>linear slides</span><span>alliance selection</span>
+        <!-- product preview, built from real seed data in home.js -->
+        <div class="preview" aria-hidden="true">
+          <div class="pv pv-profile" data-reveal data-speed="-0.04" style="--i:2">
+            <div class="row" id="pvHead"></div>
+            <p style="color:var(--fg-2);font-size:.9rem;margin:16px 0 0" id="pvBlurb"></p>
+            <div class="pv-slots" id="pvSlots"></div>
+          </div>
+          <div class="pv pv-session" data-reveal data-speed="0.05" style="--i:4">
+            <span class="lbl">Upcoming session</span>
+            <h4>Autonomous path tuning</h4>
+            <p class="mono muted" style="margin:6px 0 14px">Thu 7:00 PM · 45 min · Team #23901</p>
+            <span class="rec">Recording enabled</span>
+          </div>
+          <div class="pv pv-feedback" data-reveal data-speed="0.1" style="--i:6">
+            <span class="pill good">Helped</span>
+            <p style="font-size:.84rem;color:var(--fg-2);margin:10px 0 0">"Found the bug in our odometry in ten minutes."</p>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- 01 who -->
+    <!-- stats -->
+    <section class="stats">
+      <div class="wrap">
+        <div class="stat" data-reveal><b data-count="0" id="stMentors">0</b><span>Mentors on Relay</span></div>
+        <div class="stat" data-reveal style="--i:1"><b data-count="0" id="stSeasons">0</b><span>Combined FTC seasons</span></div>
+        <div class="stat" data-reveal style="--i:2"><b><span data-count="0" id="stPos">0</span>%</b><span>Sessions rated helpful</span></div>
+        <div class="stat" data-reveal style="--i:3"><b><span data-count="100">0</span>%</b><span>Sessions recorded</span></div>
+      </div>
+    </section>
+
+    <!-- who -->
     <section class="sec">
       <div class="wrap">
         <div class="sec-head">
-          <div class="sec-num">01 / who mentors</div>
           <div>
-            <h2 data-split>Two kinds of people<br>you'd want to <em>call.</em></h2>
+            <span class="eyebrow">Who mentors</span>
+            <h2 data-split>Two kinds of<br>experience.</h2>
           </div>
+          <p data-reveal>Some questions need someone with years of perspective. Others need someone who is in the pits this Saturday. Relay has both.</p>
         </div>
 
-        <div class="who" data-reveal>
-          <div>
-            <span class="tag">Seen a lot</span>
-            <h3>The ones who've been around</h3>
-            <p class="muted">Alumni who ran their team for years, engineers who judge at qualifiers, the senior on your old team who somehow knew everything.</p>
+        <div class="who">
+          <div data-reveal>
+            <span class="tag">Alumni · Engineers · Judges</span>
+            <h3>Years of perspective</h3>
+            <p>Former team captains, engineers who work in industry, and volunteers who judge at qualifiers and state championships.</p>
             <ul>
-              <li>Judging + portfolio reviews</li>
-              <li>Long-term team building</li>
-              <li>"We tried that in 2022, here's what happened"</li>
+              <li>Engineering portfolio and judging interview reviews</li>
+              <li>Building a team that lasts beyond one season</li>
+              <li>Mechanism design from people who do it for a living</li>
             </ul>
           </div>
-          <div>
-            <span class="tag">One season ahead</span>
-            <h3>Students still competing</h3>
-            <p class="muted">People like us. Still on a team, still in the pits on Saturdays, so they know this year's game as well as you do.</p>
+          <div data-reveal style="--i:1">
+            <span class="tag">Current competitors</span>
+            <h3>This season, right now</h3>
+            <p>High schoolers who are competing this year and already know the current game, the meta, and the parts that break.</p>
             <ul>
-              <li>This season's strategy</li>
-              <li>CAD, code, and build help that's current</li>
-              <li>Easier to ask the "dumb" questions</li>
+              <li>Current-season strategy and scouting</li>
+              <li>CAD, programming and build help that's up to date</li>
+              <li>A peer who remembers being a rookie</li>
             </ul>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- 02 how -->
-    <section class="sec" style="padding-top:0">
+    <!-- how -->
+    <section class="sec tight">
       <div class="wrap">
         <div class="sec-head">
-          <div class="sec-num">02 / how it works</div>
-          <div><h2 data-split>Four steps.<br>No <em>stars.</em></h2></div>
+          <div>
+            <span class="eyebrow">How it works</span>
+            <h2 data-split>From question<br>to answer in <em>four steps.</em></h2>
+          </div>
         </div>
 
         <div class="steps">
           <div class="steps-sticky">
             <div class="big-num" aria-hidden="true"><span class="roll"><span>1</span><span>2</span><span>3</span><span>4</span></span></div>
             <div>
-              <div class="label" id="stepLabel">find someone</div>
+              <div class="label" id="stepLabel">Choose a mentor</div>
               <div class="steps-progress"><i></i></div>
             </div>
           </div>
           <div class="steps-list">
-            <article class="step active" data-label="find someone">
-              <h3>Read some bios.</h3>
-              <p>Every mentor has a real write-up: what teams they were on, what they actually did, what they're good at. Filter by programming, CAD, build, strategy, outreach, portfolio.</p>
-              <div class="mini"><span class="pill">#14872</span><span class="pill">4 seasons</span><span class="pill solid">Programming</span></div>
+            <article class="step active" data-label="Choose a mentor">
+              <h3>Read full profiles.</h3>
+              <p>Each mentor lists the teams they've been on, their roles, the awards they've won and what they can help with. Filter by programming, CAD, build, strategy, outreach or portfolio.</p>
+              <div class="mini"><span class="pill">#14872</span><span class="pill">4 seasons</span><span class="pill accent">Programming</span></div>
             </article>
-            <article class="step" data-label="book a time">
-              <h3>Pick a slot.</h3>
-              <p>Mentors post the times they're free. Grab one, say what you want help with, and you'll both get it on your list. Usually a 30–60 minute video call.</p>
+            <article class="step" data-label="Book a session">
+              <h3>Pick an open time.</h3>
+              <p>Mentors publish their availability. Choose a slot and describe what your team needs, so the mentor can prepare before the call.</p>
               <div class="mini"><span class="pill">Tue 6:30 PM</span><span class="pill accent">Thu 7:00 PM</span><span class="pill">Sat 11:00 AM</span></div>
             </article>
-            <article class="step" data-label="have the call">
-              <h3>Talk it through.</h3>
-              <p>Share your screen, show the robot on camera, send code. If the mentor is earning volunteer hours, the call gets recorded. Everyone is told up front.</p>
-              <div class="mini"><span class="pill">● rec</span><span class="pill">screen share</span></div>
+            <article class="step" data-label="Meet on video">
+              <h3>Work through it together.</h3>
+              <p>Sessions run on video with screen sharing, so mentors can review code, CAD and the robot itself. Sessions are recorded and everyone agrees to that when booking.</p>
+              <div class="mini"><span class="pill mag">● Recording</span><span class="pill">Screen share</span></div>
             </article>
-            <article class="step" data-label="say if it helped">
-              <h3>Thumbs up or thumbs down.</h3>
-              <p>We skipped star ratings on purpose. Nobody knows the difference between a 3.8 and a 4.1. Did it help or not? Leave a sentence about why if you want.</p>
-              <div class="mini"><span class="pill" style="background:#2f6b4a;color:#fff;border-color:#2f6b4a">helped</span><span class="pill">didn't help</span></div>
+            <article class="step" data-label="Rate the session">
+              <h3>Helpful, or not.</h3>
+              <p>No star ratings. After a session, the team answers one question: did it help? Those answers are public on every profile, so the next team knows what to expect.</p>
+              <div class="mini"><span class="pill good">Helped</span><span class="pill">Didn't help</span></div>
             </article>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- 03 mentors preview -->
-    <section class="sec" style="background:var(--paper-2)">
+    <!-- parents -->
+    <section class="sec alt" id="parents">
       <div class="wrap">
         <div class="sec-head">
-          <div class="sec-num">03 / some of the mentors</div>
           <div>
-            <h2 data-split>Real people,<br><em>real</em> seasons.</h2>
-            <p data-reveal>Click a card for the full bio, past teams, feedback from other teams, and open time slots.</p>
+            <span class="eyebrow">For parents</span>
+            <h2 data-split>Built so you know<br>who your student<br>is talking to.</h2>
+          </div>
+          <p data-reveal>Relay is run by a student-led nonprofit. We designed it around the questions parents ask us first.</p>
+        </div>
+
+        <div class="safety">
+          <div data-reveal>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="6" width="14" height="12" rx="2"/><path d="m16 10 6-3v10l-6-3"/><circle cx="7" cy="12" r="1.5" fill="currentColor"/></svg>
+            <h3>Every session is recorded</h3>
+            <p>Teams agree to recording before they can book. Recordings are reviewed by the nonprofit.</p>
+          </div>
+          <div data-reveal style="--i:1">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/></svg>
+            <h3>Real names, real teams</h3>
+            <p>Mentors list their full name, team numbers and history. No anonymous accounts.</p>
+          </div>
+          <div data-reveal style="--i:2">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 10v11H3V10h4zm0 0 4-8c1.7 0 3 1.3 3 3v4h5.5a2 2 0 0 1 2 2.3l-1.4 8A2 2 0 0 1 18.1 21H7"/></svg>
+            <h3>Public track record</h3>
+            <p>Every profile shows how many teams said a session helped, and how many said it didn't.</p>
+          </div>
+          <div data-reveal style="--i:3">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2 4 6v6c0 5 3.4 8.6 8 10 4.6-1.4 8-5 8-10V6l-8-4z"/><path d="m9 12 2 2 4-4"/></svg>
+            <h3>Parents welcome</h3>
+            <p>Parents and coaches can join any session. Sessions are with the team, focused on robotics.</p>
           </div>
         </div>
-        <div class="cards" id="homeMentors"></div>
-        <p style="margin-top:44px" data-reveal><a class="link-u" href="mentors.html">See everyone →</a></p>
       </div>
     </section>
 
-    <!-- 04 hours -->
+    <!-- students / awards -->
+    <section class="sec">
+      <div class="wrap">
+        <div class="sec-head">
+          <div>
+            <span class="eyebrow">For students</span>
+            <h2 data-split>Aim for the<br><em>awards</em> that matter.</h2>
+          </div>
+          <p data-reveal>Judged awards reward how a team works, not just how the robot scores. Mentors on Relay have won them and judged them.</p>
+        </div>
+
+        <div class="awards">
+          <div class="award-row" data-reveal>
+            <h3>Inspire<small>Top judged award</small></h3>
+            <p>The all-around award. Strong portfolio, clear interviews, a robot that works, and a team that shares what it learns.</p>
+            <div class="tags"><span class="pill accent">Portfolio</span><span class="pill">Strategy</span></div>
+          </div>
+          <div class="award-row" data-reveal>
+            <h3>Think<small>Engineering portfolio</small></h3>
+            <p>Shows the engineering process: what you tried, what failed, how you decided. Mentors can review your portfolio page by page.</p>
+            <div class="tags"><span class="pill accent">Portfolio</span></div>
+          </div>
+          <div class="award-row" data-reveal>
+            <h3>Control<small>Software &amp; sensors</small></h3>
+            <p>Autonomous routines, odometry, vision and driver-assist. Get your code reviewed by people who have won it.</p>
+            <div class="tags"><span class="pill accent">Programming</span></div>
+          </div>
+          <div class="award-row" data-reveal>
+            <h3>Design<small>Industrial design</small></h3>
+            <p>A robot that is well-engineered and looks it. Help with CAD, mechanism design and iteration.</p>
+            <div class="tags"><span class="pill accent">CAD</span><span class="pill">Build</span></div>
+          </div>
+          <div class="award-row" data-reveal>
+            <h3>Connect<small>Outreach &amp; STEM community</small></h3>
+            <p>Outreach that reaches people outside robotics. Plan events and write about them in a way judges respect.</p>
+            <div class="tags"><span class="pill mag">Outreach</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- mentors -->
+    <section class="sec alt">
+      <div class="wrap">
+        <div class="sec-head">
+          <div>
+            <span class="eyebrow">Featured mentors</span>
+            <h2 data-split>Meet a few<br>of the <em>mentors.</em></h2>
+          </div>
+          <p data-reveal>Open any profile for the full bio, competition history, feedback from other teams and available times.</p>
+        </div>
+        <div class="cards" id="homeMentors"></div>
+        <p style="margin-top:40px" data-reveal><a class="link-u" href="mentors.html">View all mentors →</a></p>
+      </div>
+    </section>
+
+    <!-- hours -->
     <section class="sec">
       <div class="wrap">
         <div class="hours-grid">
           <div>
-            <div class="sec-num" style="margin-bottom:28px">04 / volunteer hours</div>
-            <h2 data-split>Mentor, get<br><em>hours</em> for it.</h2>
-            <p style="margin-top:22px;max-width:42ch;color:var(--ink-2)" data-reveal>Relay runs through our nonprofit, so mentoring can count as volunteer service. It's capped, and every call has to be recorded so we can sign off on it honestly.</p>
+            <span class="eyebrow" style="margin-bottom:18px">For mentors</span>
+            <h2 data-split style="margin-top:18px">Earn verified<br><em>volunteer hours.</em></h2>
+            <p style="margin-top:22px;max-width:44ch;color:var(--fg-2)" data-reveal>Relay runs through our nonprofit, so mentoring can count toward service hours for school, scholarships and college applications. Hours are capped each season and need a recording as proof.</p>
             <div class="counter-row" data-reveal>
-              <div class="counter"><b data-count="20">0</b><span>max hrs / season</span></div>
-              <div class="counter"><b data-count="2">0</b><span>max hrs / call</span></div>
-              <div class="counter"><b><span data-count="100">0</span>%</b><span>calls recorded</span></div>
+              <div class="counter"><b data-count="20">0</b><span>Max hours per season</span></div>
+              <div class="counter"><b data-count="2">0</b><span>Max hours per session</span></div>
             </div>
           </div>
-          <div class="notebook" data-reveal="tilt">
-            <p class="hand">how hours work —</p>
-            <ol>
-              <li>Tell the team the call is being recorded.</li>
-              <li>Hit record before you start talking.</li>
-              <li>Log the session with the recording link.</li>
-              <li>We review it, then it's approved.</li>
+          <div class="panel" data-reveal style="--i:1">
+            <span class="lbl" style="display:block;margin-bottom:8px">How hours are verified</span>
+            <ol class="checklist">
+              <li><span><b>Tell the team you're recording</b>They agreed when booking. Say it again at the start.</span></li>
+              <li><span><b>Record the whole session</b>Zoom, Google Meet or Discord all work.</span></li>
+              <li><span><b>Log it with the recording link</b>Add the team number and what you covered.</span></li>
+              <li><span><b>The nonprofit reviews and approves</b>Approved hours appear on your record.</span></li>
             </ol>
-            <p class="hand">no recording = no hours. sorry!</p>
-            <p style="margin-top:18px"><a class="link-u" href="hours.html">Log hours / full rules →</a></p>
+            <p style="margin:18px 0 0"><a class="link-u" href="hours.html">Full rules and hour log →</a></p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- 05 board -->
-    <section class="sec" style="padding-top:0">
+    <!-- board -->
+    <section class="sec tight">
       <div class="wrap">
         <div class="sec-head">
-          <div class="sec-num">05 / the board</div>
           <div>
-            <h2 data-split>Or just ask<br><em>everyone.</em></h2>
-            <p data-reveal>A message board for every FTC team on Relay. Mentors hang out there too, their replies get an blue stripe.</p>
+            <span class="eyebrow">Community board</span>
+            <h2 data-split>Questions answered<br>in <em>public.</em></h2>
           </div>
+          <p data-reveal>A message board for every team on Relay. Mentors answer there too, and their replies are marked so you know who's speaking from experience.</p>
         </div>
         <div class="board-prev" id="homeBoard"></div>
         <p style="margin-top:36px" data-reveal><a class="link-u" href="board.html">Go to the board →</a></p>
       </div>
     </section>
 
-    <!-- quote -->
-    <section class="sec" style="padding-top:0">
+    <!-- faq -->
+    <section class="sec tight">
       <div class="wrap">
-        <p class="quote-big">"Our rookie year would've gone so much better with <span class="hl">one phone call</span> to somebody who'd done it before."</p>
-        <p class="mono muted" data-reveal>— basically why we started this</p>
+        <div class="sec-head">
+          <div>
+            <span class="eyebrow">Questions</span>
+            <h2 data-split>Common questions.</h2>
+          </div>
+        </div>
+        <div class="faq" data-reveal>
+          <details>
+            <summary>How much does it cost?</summary>
+            <p>Nothing. Relay is free for teams. Mentors volunteer their time, and the nonprofit covers the rest.</p>
+          </details>
+          <details>
+            <summary>Who can be a mentor?</summary>
+            <p>FTC alumni, students currently competing with at least one full season behind them, and engineers or judges with FTC experience. Every mentor profile shows their real name and team history.</p>
+          </details>
+          <details>
+            <summary>Why are sessions recorded?</summary>
+            <p>Two reasons. It gives parents and the nonprofit a record of every session, and it is how mentors prove their volunteer hours. Teams agree to recording before they can book.</p>
+          </details>
+          <details>
+            <summary>Can a parent or coach join the session?</summary>
+            <p>Yes. Parents and coaches are welcome on any session. Many teams join as a group from their build space.</p>
+          </details>
+          <details>
+            <summary>How are mentors rated?</summary>
+            <p>After a session, the team says whether it helped or didn't, with an optional comment. Only teams who booked that mentor can leave feedback, and the totals are shown on every profile.</p>
+          </details>
+        </div>
       </div>
     </section>
 
     <section class="cta-band">
       <div class="wrap">
-        <h2 data-split>Your turn<br>to <em>hand off.</em></h2>
-        <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:44px" data-reveal>
-          <a class="btn" href="mentors.html">Find a mentor <span class="arrow">→</span></a>
-          <a class="btn ghost" href="board.html">Post on the board</a>
+        <h2 data-split>Your next season<br>starts with <em>one call.</em></h2>
+        <p data-reveal>Find a mentor who has been where your team is going.</p>
+        <div class="actions" data-reveal>
+          <a class="btn" href="mentors.html">Browse mentors <span class="arrow">→</span></a>
+          <a class="btn ghost" href="hours.html">Become a mentor</a>
         </div>
       </div>
     </section>

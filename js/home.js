@@ -15,8 +15,22 @@
       <a href="board.html#${p.id}" data-reveal style="--i:${i}">
         <span class="pill">${esc(p.cat)}</span>
         <h4>${esc(p.title)}</h4>
-        <div class="meta">${esc(p.by)} ${esc(p.team || "")} · ${p.replies.length} replies · ${ago(p.at)}</div>
+        <div class="meta">${esc(p.by)} ${esc(p.team || "")} · ${p.replies.length} ${p.replies.length === 1 ? "reply" : "replies"} · ${ago(p.at)}</div>
       </a>`).join("");
+
+    // hero preview uses a real profile
+    const m = Store.mentor("maya");
+    $("#pvHead").innerHTML = `${UI.avatar(m)}<div style="flex:1;min-width:0"><h4>${esc(m.name)}</h4><div class="mono muted">${esc(m.team)}</div></div>`;
+    $("#pvBlurb").textContent = m.blurb;
+    $("#pvSlots").innerHTML = m.slots.map((s, i) => `<span class="${i === 1 ? "on" : ""}">${esc(s)}</span>`).join("");
+
+    // stats from the same data the directory uses
+    const all = Store.mentors();
+    const fb = all.map((x) => Store.score(x.id));
+    const pos = fb.reduce((n, x) => n + x.pos, 0), tot = fb.reduce((n, x) => n + x.total, 0);
+    $("#stMentors").dataset.count = all.length;
+    $("#stSeasons").dataset.count = all.reduce((n, x) => n + x.years, 0);
+    $("#stPos").dataset.count = tot ? Math.round((pos / tot) * 100) : 0;
 
     UI.observe($("main"));
     initSteps();
@@ -51,7 +65,8 @@
       const max = document.documentElement.scrollHeight - innerHeight;
       track.style.setProperty("--p", max > 0 ? (scrollY / max).toFixed(4) : 0);
       if (!reduced) {
-        movers.forEach((el) => (el.style.transform = `translateY(${scrollY * el.dataset.speed}px) rotate(3deg)`));
+        // `translate` composes with the reveal transform instead of replacing it
+        movers.forEach((el) => (el.style.translate = `0 ${(scrollY * el.dataset.speed).toFixed(1)}px`));
       }
       ticking = false;
     };
